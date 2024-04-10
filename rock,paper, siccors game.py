@@ -9,13 +9,13 @@ def   g(pc,cc):
     else:
         return "you lose"
 
-print("welcome to my fucking rock, paper,siccors game")
+print("welcome to my rock, paper,siccors game")
 while True:
     c=['r','p','s']
     pc=input("choose from (rock,paper, siccors):")
     cc=random.choice(c)
-    print("computer huku lo choice:",cc)
-    print("naa sulla lo choice:",pc)
+    print("computer choice:",cc)
+    print("your choice:",pc)
     result=g(pc,cc)
     print(result)
 
