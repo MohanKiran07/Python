@@ -3,16 +3,16 @@ class Node:
         self.data = data
         self.next = None
 
-def create(data):
+def create_node(data):
     return Node(data)
 
 def insert_beginning(head, data):
-    new_node = create(data)
+    new_node = create_node(data)
     new_node.next = head
     return new_node
 
 def insert_end(head, data):
-    new_node = create(data)
+    new_node = create_node(data)
     if head is None:
         return new_node
     last_node = head
@@ -24,7 +24,7 @@ def insert_end(head, data):
 def insert_position(head, data, position):
     if position <= 1:
         return insert_beginning(head, data)
-    new_node = create(data)
+    new_node = create_node(data)
     current = head
     for _ in range(position - 2):
         if current is None:
@@ -83,12 +83,12 @@ def search(head, key):
     while current:
         position += 1
         if current.data == key:
-            print(f"Key is found at position {position}")
+            print(f"Key {key} is found at position {position}")
             return
         current = current.next
-    print("Key is not found")
+    print(f"Key {key} is not found")
 
-def reverse(head):
+def reverse_list(head):
     prev = None
     current = head
     while current:
@@ -111,7 +111,7 @@ def remove_duplicates(head):
                 runner = runner.next
         current = current.next
 
-def length(head):
+def list_length(head):
     count = 0
     current = head
     while current:
@@ -119,15 +119,15 @@ def length(head):
         current = current.next
     return count
 
-def display(head):
+def display_list(head):
     current = head
-    print("\n~~~~~~~~~~~~~~~~~~~")
+    print("\nLinked List:")
     while current:
-        print(current.data, end=" ")
+        print(current.data, end=" -> ")
         current = current.next
-    print("\n~~~~~~~~~~~~~~~~~~~\n")
+    print("None")
 
-def split(head):
+def split_list(head):
     if head is None or head.next is None:
         print("List is too short to split.")
         return None, None
@@ -146,15 +146,13 @@ def split(head):
 if __name__ == "__main__":
     head = None
     while True:
-        data = int(input("Enter data for the node: "))
-        head = insert_end(head, data)
-        choice = input("Do you want to insert more? (y/n): ")
-        if choice.lower() != 'y':
+        data = int(input("Enter data for the node (or -1 to stop): "))
+        if data == -1:
             break
+        head = insert_end(head, data)
     
     while True:
-        print("\n~~~~~~~~~~~~~~~~~~~")
-        print("Operations:")
+        print("\nOperations:")
         print("1. Insert at beginning")
         print("2. Insert at end")
         print("3. Insert at specific position")
@@ -168,53 +166,52 @@ if __name__ == "__main__":
         print("11. Display")
         print("12. Split")
         print("0. Exit")
-        print("~~~~~~~~~~~~~~~~~~~")
         
         choice = int(input("Enter your choice: "))
         
         if choice == 1:
             data = int(input("Enter data for the node: "))
             head = insert_beginning(head, data)
-            display(head)
+            display_list(head)
         elif choice == 2:
             data = int(input("Enter data for the node: "))
             head = insert_end(head, data)
-            display(head)
+            display_list(head)
         elif choice == 3:
             data = int(input("Enter data for the node: "))
             position = int(input("Enter the position: "))
             head = insert_position(head, data, position)
-            display(head)
+            display_list(head)
         elif choice == 4:
             head = delete_beginning(head)
-            display(head)
+            display_list(head)
         elif choice == 5:
             head = delete_end(head)
-            display(head)
+            display_list(head)
         elif choice == 6:
             position = int(input("Enter the position: "))
             head = delete_position(head, position)
-            display(head)
+            display_list(head)
         elif choice == 7:
             key = int(input("Enter search key: "))
             search(head, key)
         elif choice == 8:
-            head = reverse(head)
-            display(head)
+            head = reverse_list(head)
+            display_list(head)
         elif choice == 9:
             remove_duplicates(head)
-            display(head)
+            display_list(head)
         elif choice == 10:
-            length_of_list = length(head)
-            print(f"Length of linked list is {length_of_list}")
+            length = list_length(head)
+            print(f"Length of linked list: {length}")
         elif choice == 11:
-            display(head)
+            display_list(head)
         elif choice == 12:
-            first_half, second_half = split(head)
+            first_half, second_half = split_list(head)
             print("First Half of Linked List:")
-            display(first_half)
+            display_list(first_half)
             print("Second Half of Linked List:")
-            display(second_half)
+            display_list(second_half)
         elif choice == 0:
             print("Program Exit!")
             break
