@@ -1,18 +1,12 @@
-def p(s):
-    s=s.lower().replace(" ","")
-    return s==s[::-1]
-    
-s=input("enter string to check palindrome:")
-if p(s):
-    print("'{}' is the palindrome".format(s))
+def is_palindrome(s):
+    # Convert the string to lowercase and remove spaces
+    s = s.lower().replace(" ", "")
+    # Check if the string is equal to its reverse
+    return s == s[::-1]
+
+input_string = input("Enter a string to check for palindrome: ")
+
+if is_palindrome(input_string):
+    print(f"'{input_string}' is a palindrome.")
 else:
-    print("not a palindrome ")
-
-
-
-
-
-
-
-
-
+    print("The input is not a palindrome.")
