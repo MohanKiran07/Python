@@ -1,0 +1,5 @@
+import numpy as np
+np.random.seed(0)
+data=np.random.randint(0,100,size=20)
+print(f"Data:\n{data}\n")
+print(f"mean:{np.mean(data):.3f}\nMedian:{np.median(data):.3f}\nVarience:{np.var(data):.3f}\nStd Dev:{np.std(data):.3f}")
